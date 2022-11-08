@@ -5,12 +5,83 @@
 
 
 <style>
+
+
+    .search-button{
+        position: absolute;
+        
+        margin-left: 150px;
+    }
+
     .rasm{
         width: 300px;
         height: 250px;
     }
-</style>
 
+    .fdsa{
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+</style>
+{% load static %}
+
+    <!-- =================Product Area Starts================= -->
+    
+    <header>
+        <div class="header-area header-2 header-resposive-2 position-absolute pt-30 pl-65 pr-80">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 offset-xl-0 offset-lg-0 offset-md-5 offset-sm-4 ">
+                        <div class="logo text-center text-lg-left">
+                            <a href="{% url 'index_url' %}"><h2>Big Sale.</h2></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-auto col-sm-auto">
+                        <div class="main-menu pt-5">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="login-page.html">Login</a></li>
+                                            <li><a href="{% url 'register_url' %}">Register</a></li>
+                                        </ul>
+                                    </li>
+                                 
+                                  
+                                    <li><a href="{% url 'category_url' %}">Category</a>
+                                        
+                                          
+                                  
+                                    <li><a href="blog-page.html">Blog</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog-page-2.html">Blog</a></li>
+                                            <li><a href="blog-detalis-page.html">Blog Detalis</a></li>
+                                           
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact-page.html">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <form method="get">
+                        <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+                            <div class="site-info  d-flex justify-content-end">
+                                <div class="search position-relative mr-15 ">
+                                    <div class="search-button">
+                                    <button type="submit" class="fdsa"><img src="{% static 'img/icon/search-white.png' %}" alt=""></button>
+                                    <div class="search-form">
+                                        
+                                            <input type="text" name="category" placeholder="Enter your keywords.....">
+                                       
+                                    </div>
+                            </div>
+                           
+                            
+    </header>
+  
 <div class="page-title-area pt-10 pb-120 " style="background-image: url(assets/img/bg/contact-bg.png);">
    
 </div>
@@ -35,7 +106,8 @@
                        
                         <li><a href="{% url 'product_url' c.slug %}">{{c.title}}</a></li>
                     {% endfor %}
-                        
+                
+                </form>
                       </ul>
                                          
                     </div>

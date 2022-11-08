@@ -25,6 +25,11 @@ def product(request,slug):
     category = Category.objects.get(slug=slug)
     product = Product.objects.filter(category=category)
     
+    query = request.GET.get('category')
+    if query is not None and query !='':
+        
+        categorys = Category.objects.filter(Q(title__icontains=query))
+    
     
     context = {
         'categorys':categorys,
@@ -33,6 +38,15 @@ def product(request,slug):
         'product':product
     }
     return render(request,'main/product.html',context)
+
+def products_all(request):
+    products = Product.objects.all()
+    query = request.GET.get('name')
+    if query is not None and query != '':
+        products = Product.objects.filter(Q(name__icontains=query))
+
+    return render(request,'main/products.html',{'products':products})
+
     
 
 def register_page(request):
