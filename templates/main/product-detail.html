@@ -1,0 +1,202 @@
+{% extends "main/base.html" %}
+
+
+{% block content %}
+{% load static %}
+<style>
+    .search-button{
+        position: absolute;
+        
+        margin-left: 150px;
+    }
+
+    .input-comment{
+        float: left;
+        justify-content: space-between;
+    }
+   .kks{
+    margin-left: 20px;
+    padding: 4px;
+    background-color: rgb(245, 58, 58);
+    border-radius: 5px;
+    border: 0cm;
+    color: white;
+    font-weight: 700;
+   }
+</style>
+    <!-- =================Product Area Starts================= -->
+    
+    <header>
+        <div class="header-area header-2 header-resposive-2 position-absolute pt-30 pl-65 pr-80">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-12 offset-xl-0 offset-lg-0 offset-md-5 offset-sm-4 ">
+                        <div class="logo text-center text-lg-left">
+                            <a href="{% url 'index_url' %}"><h2>Big Sale.</h2></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-auto col-sm-auto">
+                        <div class="main-menu pt-5">
+                            <nav id="mobile-menu">
+                                <ul>
+                                    <li><a href="index.html">Home</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="login-page.html">Login</a></li>
+                                            <li><a href="{% url 'register_url' %}">Register</a></li>
+                                        </ul>
+                                    </li>
+                                 
+                                  
+                                    <li><a href="{% url 'category_url' %}">Category</a>
+                                        
+                                          
+                                  
+                                    <li><a href="blog-page.html">Blog</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="blog-page-2.html">Blog</a></li>
+                                            <li><a href="blog-detalis-page.html">Blog Detalis</a></li>
+                                           
+                                        </ul>
+                                    </li>
+                                    <li><a href="contact-page.html">Contact Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <form method="get">
+                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-4 col-12">
+                        <div class="site-info  d-flex justify-content-end">
+                            <div class="search position-relative mr-15 ">
+                                <div class="search-button">
+                                <a href=""><img src="{% static 'img/icon/search-white.png' %}" alt=""></a>
+                                <div class="search-form">
+                                    
+                                        <input type="text" name="name" placeholder="Enter your keywords.....">
+                                    </form>
+                                </div>
+                                </div>
+                            </div>
+                           
+                            
+    </header>
+        <!-- =================Product Area Starts================= -->
+
+        <div class="product-area product-shop-page  product-list-page product-detalis-page  pt-50 ">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-8 col-11 col offset-xl-1 offset-lg-1">
+                        <div class=" slider-nav-thumbnails product-list-active d-md-none">
+                            <a class="active"><img src="assets/img/product/product-62.png" alt=""></a>
+                            <a><img src="assets/img/product/product-63.png" alt=""></a>
+                            <a><img src="assets/img/product/product-64.png" alt=""></a>
+                            <a><img src="assets/img/product/product-65.png" alt=""></a>
+                            <a><img src="assets/img/product/product-63.png" alt=""></a>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 col-md-6 col-sm-12">
+                        <div class="product-list-slider">
+                            <br><br> <br><br>
+                            <div class="product-img">
+                                <img src="{{product.image.url}}" alt="">
+                            </div>
+                           </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12">
+                        <div class="product-wrapper product-wrapper-2 pt-60">
+                            <div class="product-detalis">
+                                <br><br>
+                                <h6><a href="shop-detalis-page.html">{{product.name}}</a></h6>
+                                
+                                <div class="product-interested pb-20">
+                                    <span class="pr-10">{{product.company}}</span>
+                                    {% if product.availbale %}
+                                            
+                                    
+                                    {% else %}
+                                    <span>Sold</span>
+
+                                    {% endif %}
+                                </div>
+                                <div class="price d-inline-block pb-25">
+                                    <span>{{product.price}} $</span>
+                                     
+                                </div>
+                                
+                                <hr>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                
+    
+            </div>
+        </div>
+    
+        <div class="description-area pt-10">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="description-tab pt-50 pl-50 pr-50 pb-40">
+                            <nav>
+                              <div class="nav nav-tabs " id="approach-tabs" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-description-tab" data-toggle="tab" href="#nav-description" role="tab" aria-controls="nav-description" aria-selected="true">description</a>
+                                <a class="nav-item nav-link" id="nav-comment-tab" data-toggle="tab" href="#nav-comment" role="tab" aria-controls="nav-comment" aria-selected="false">COMMENTS</a>
+                               
+                              </div>
+                            </nav>
+                            <div class="tab-content mt-25 " id="nav-tabContents">
+                              <div class="tab-pane  active " id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab">
+                                <p>{{product.description}}</p>
+                              </div>
+                              <div class="tab-pane " id="nav-comment" role="tabpanel" aria-labelledby="nav-comment-tab">
+                                
+                                <div class="item-features">
+                                    <div class="section-title">
+                                        <h5>Commentaries</h5>
+                                        <br>
+                                        
+                                    </div>
+                                    </div>
+                                    <form method="post">
+                                        {% csrf_token %}
+                                        <input class="input-comment" type="text" name="comment" >
+                                         <button class="kks" type="submit">Send</button>  
+                                 
+                                       <br>
+                                    
+                                    <ul class="item-features-list pl-35">
+                                   </div>
+                                      
+                                   {% for c in comment %}
+                                      <p> </p>
+                                      <p>{{c}}</p>
+                                        {% endfor %}
+                                    </form>
+                                    </ul>
+                              </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =================Product Area Ends================= -->
+    <!-- =================Slider Area Starts================= -->
+
+    <div class="slider-area slider-area-2   owl-carousel position-relative">
+        <div class="single-slide  " style="background-image: url(static/img/slider/asc.jpg);">
+          
+        </div>
+    </div>
+    <!-- =================Slider Area Ends================= -->
+
+ 
+
+   {% endblock %}

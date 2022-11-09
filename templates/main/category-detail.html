@@ -1,31 +1,32 @@
-{% extends 'main/base.html' %}
+{% extends 'main/category.html' %}
+
 
 {% block content %}
-{% load static %}
+
+
 <style>
+
+
     .search-button{
         position: absolute;
         
         margin-left: 150px;
     }
-.rasm{
-    
-    height: 40vh;
-}
-.alala{
- 
-    justify-content: space-around;
-    align-items: center;
-    width: 300px;
-    margin-left: 40px;
-}
-.fdsa{
+
+    .rasm{
+        width: 300px;
+        height: 250px;
+    }
+
+    .fdsa{
     background-color: black;
     width: 40px;
     height: 40px;
     border-radius: 10px;
 }
 </style>
+{% load static %}
+
     <!-- =================Product Area Starts================= -->
     
     <header>
@@ -73,61 +74,61 @@
                                     <button type="submit" class="fdsa"><img src="{% static 'img/icon/search-white.png' %}" alt=""></button>
                                     <div class="search-form">
                                         
-                                            <input type="text" name="name" placeholder="Enter your keywords.....">
-                                        </form>
+                                            <input type="text" name="category" placeholder="Enter your keywords.....">
+                                       
                                     </div>
                             </div>
+                           
+                            
     </header>
   
-    <div class="product-area  product-shop-page pt-150 pb-120 ">
-        <div class="container">
-            <div class="row">
-             <div class="col-xl-12 pb-50">
-                {% for p in products %}
-                    <div class="product-wrapper mb-30">
-                        <div class="alala">
-                        <div class="product-img ">
-                            <img class="rasm" src="{{p.image.url}}" alt="product">
+<div class="page-title-area pt-10 pb-120 " style="background-image: url(assets/img/bg/contact-bg.png);">
+   
+</div>
+
+<!-- =================Page Title Area Ends================= -->
+
+<!-- =================Product Area Starts================= -->
+
+
+<div class="product-area product-shop-page  product-list-page  pt-50 ">
+    <div class="container">
+        <div class="row">
+            {% for p in products %}
+            <div class="product-wrapper mb-30" style="margin: 5px;">
+                <div class="alala">
+                <div class="product-img ">
+                    <img class="rasm" src="{{p.image.url}}" alt="product">
+                </div>
+                <div class="asddsa">
+                <div class="flip-box">
+                    <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
+                        <span>{{p.category.title}}</span>
+                        <h6><a href="shop-detalis-page.html">{{p.name}}</a></h6>
+                        <div class="price-color ">
+                            <div class="price d-inline-block">
+                                <span>{{p.price}}</span>
+                                
+                            </div>
                             
                         </div>
-                        <div class="asddsa">
-                        <div class="flip-box">
-                            <div class="product-detalis pt-15 pl-20 pr-20 pb-25">
-                                <span>{{p.category.title}}</span>
-                                <h6><a href="{% url 'product_detail_url' p.id %}">{{p.name}}</a></h6>
-                                <div class="price-color ">
-                                    <div class="price d-inline-block">
-                                        <span>{{p.price}}</span>
-                                        
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                            <div class="product-detalis product-detalis-2 pt-15 pl-20 pr-20 pb-25">
-                                <span>Men Fashion</span>
-                                <h6><a href="{% url 'product_detail_url' p.id %}">{{p.description|truncatewords:20}}</a></h6>
-                                <div class="buy-info ">
-                                    <div class="cart float-left">
-                                         
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
                     </div>
                 </div>
-                    {% endfor %}
-                   
-             </div>
-             
             </div>
-        
-            
+        </div>
+            {% endfor %}
            
-                    
-  
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- =================Product Area Ends================= -->
+<!-- =================Product Area Ends================= -->
+
+
+
+
 
 
 {% endblock %}

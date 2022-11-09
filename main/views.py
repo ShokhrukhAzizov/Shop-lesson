@@ -9,45 +9,58 @@ from django.contrib import messages
 def main_page(request):
     return render(request,'main/index.html')
 
-def category(request):
-    categorys = Category.objects.all()
-    
-   
-    context = {
-        'categorys':categorys,
-       
-    }
-    return render(request,'main/category.html',context)
 
-def product(request,slug):
+def categorys(request):
     categorys = Category.objects.all()
-    products = Product.objects.all()
-    category = Category.objects.get(slug=slug)
-    product = Product.objects.filter(category=category)
-    
-    query = request.GET.get('category')
-    if query is not None and query !='':
-        
-        categorys = Category.objects.filter(Q(title__icontains=query))
-    
-    
     context = {
-        'categorys':categorys,
-        'products':products,
+        'categorys':categorys
+    }
+    return render(request, 'main/category.html', context)
+
+
+def category_detail(request, pk):
+    category = Category.objects.get(pk=pk)
+    products = Product.objects.filter(category=category)
+    context = {
         'category':category,
-        'product':product
+        'products':products
     }
-    return render(request,'main/product.html',context)
+    return render(request, 'main/category-detail.html', context)
 
-def products_all(request):
+
+def products(request):
     products = Product.objects.all()
-    query = request.GET.get('name')
-    if query is not None and query != '':
-        products = Product.objects.filter(Q(name__icontains=query))
+    q = request.GET.get('name')
+    if q is not None and q!= '':
+        products = Product.objects.filter(Q(name__icontains=q))
 
-    return render(request,'main/products.html',{'products':products})
+    context = {
+        'products':products
+    }
+    return render(request, 'main/products.html', context)
 
+
+def product_detail(request, pk):
     
+    product = Product.objects.get(pk=pk)
+    comment = Comment.objects.filter(product=product)
+    
+    
+    context = {
+        'product':product,
+        'comment':comment,
+        
+    }
+    
+    if request.method == 'POST':
+        comment = request.POST['comment']
+        Comment.objects.create(
+            comment=comment,
+            product=product
+        )
+    
+    return render(request, 'main/product-detail.html', context)
+
 
 def register_page(request):
     if request.method == 'POST':

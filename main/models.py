@@ -35,10 +35,15 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        ordering = ('created',)
+        ordering = ('name',)
 
 class Comment(models.Model):
+  
     comment = models.TextField()
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.comment
 
     class Meta:
-        ordering = ('comment',)
+        ordering = ('-comment',)
