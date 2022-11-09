@@ -1,0 +1,15 @@
+.form-select:focus{
+    box-shadow: none;
+}
+
+.uppy-Dashboard-inner{
+    background-color: $card-bg;
+    border: 1px solid $border_2;
+}
+[data-uppy-drag-drop-supported=true] .uppy-Dashboard-AddFiles{
+    border: 1px dashed $border_2;
+}
+
+.uppy-Dashboard-AddFiles-title{
+    color: $dark;
+}

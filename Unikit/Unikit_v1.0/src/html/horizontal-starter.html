@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        @@include("./partials/title-meta.html", {"title": "Unikit"})
+
+        @@include('./partials/head-css.html')
+    </head>
+
+    <body data-layout="horizontal" class="">
+        <!-- leftbar-tab-menu -->
+        @@include('./partials/horizontal-nav.html')
+        <!-- end leftbar-tab-menu-->        
+
+        <div class="page-wrapper">
+            <!-- Page Content-->
+            <div class="page-content-tab">
+                <div class="container-fluid">
+                    <!-- Page-Title -->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title-box">
+                                <div class="row">
+                                    <div class="col align-self-center">
+                                        <h4 class="page-title pb-md-0">Starter</h4>
+                                        
+                                    </div><!--end col-->
+                                    <div class="col-auto align-self-center">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Unikit</a></li>
+                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Pages</a></li>
+                                            <li class="breadcrumb-item active">Starter</li>
+                                        </ol>
+                                    </div><!--end col-->  
+                                </div><!--end row-->                                                              
+                            </div><!--end page-title-box-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+                    <!-- end page title end breadcrumb -->
+                    
+                    
+                </div><!-- container -->
+            </div>
+            <!-- end page content -->
+        </div>
+
+         <!--Start Rightbar-->
+         @@include('./partials/right-sidebar.html')
+         <!--end Rightbar-->
+         
+        <!--Start Footer-->
+        @@include('./partials/footer.html')                
+        <!--end footer-->
+
+        <!-- Javascript  -->   
+        <!-- App js -->
+        <script src="assets/js/app.js"></script>
+    </body>
+
+</html>
