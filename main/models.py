@@ -20,6 +20,7 @@ class Category(models.Model):
         return self.title
 
 class Product(models.Model):
+    
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     company = models.CharField(max_length=255)
     name = models.CharField(max_length=255)
@@ -38,7 +39,7 @@ class Product(models.Model):
         ordering = ('name',)
 
 class Comment(models.Model):
-  
+    created_at = models.DateTimeField(auto_now_add=True)
     comment = models.TextField()
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
 

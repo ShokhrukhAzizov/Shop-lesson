@@ -53,9 +53,9 @@ def product_detail(request, pk):
     }
     
     if request.method == 'POST':
-        comment = request.POST['comment']
+        a = request.POST['comment']
         Comment.objects.create(
-            comment=comment,
+            comment=a,
             product=product
         )
     
@@ -67,7 +67,7 @@ def register_page(request):
         username = request.POST['name']
         email = request.POST['email']
         password = request.POST['password'] 
-        if User.objects.filter(username=username).count() == 0:
+        try:
             User.objects.create_user(
                 username=username,
                 email=email,
@@ -76,7 +76,7 @@ def register_page(request):
             usr = authenticate(username=username,password=password)
             login(request,usr)
             return redirect('index_url')
-        else:
+        except:
             messages.error(request,'Username already registred')
             return redirect('register_url')
 

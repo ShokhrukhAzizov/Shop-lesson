@@ -112,12 +112,10 @@
                                 
                                 <div class="product-interested pb-20">
                                     <span class="pr-10">{{product.company}}</span>
-                                    {% if product.availbale %}
-                                            
-                                    
+                                    {% if product.available %}
+                                    <span>Selling</span>                                            
                                     {% else %}
                                     <span>Sold</span>
-
                                     {% endif %}
                                 </div>
                                 <div class="price d-inline-block pb-25">
@@ -158,26 +156,29 @@
                                 
                                 <div class="item-features">
                                     <div class="section-title">
+                                        <form method="post">
+                                            {% csrf_token %}
+                                            <input class="input-comment" type="text" name="comment" >
+                                             <button class="kks" type="submit">Send</button>  
+                                     
+                                           <br>
+                                        
+                                        <ul class="item-features-list pl-35">
+                                       </div>
+                                          
+                                     
+                                        </form>
                                         <h5>Commentaries</h5>
+                                        {% for c in comment %}
+                                        <p> </p>
+                                        <p6>{{c.created_at|timesince}} ago</p6>
+                                        <p>{{c}}</p>
+                                          {% endfor %}
                                         <br>
                                         
                                     </div>
                                     </div>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <input class="input-comment" type="text" name="comment" >
-                                         <button class="kks" type="submit">Send</button>  
-                                 
-                                       <br>
-                                    
-                                    <ul class="item-features-list pl-35">
-                                   </div>
-                                      
-                                   {% for c in comment %}
-                                      <p> </p>
-                                      <p>{{c}}</p>
-                                        {% endfor %}
-                                    </form>
+                                   
                                     </ul>
                               </div>
                               
