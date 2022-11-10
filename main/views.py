@@ -67,11 +67,13 @@ def register_page(request):
         username = request.POST['name']
         email = request.POST['email']
         password = request.POST['password'] 
+        phone = request.POST['phone'] 
         try:
             User.objects.create_user(
                 username=username,
                 email=email,
                 password=password,
+                phone=phone
             )
             usr = authenticate(username=username,password=password)
             login(request,usr)

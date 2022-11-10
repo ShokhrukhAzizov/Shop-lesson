@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from main.models import*
+from django.contrib.auth import logout
 
 
 def dashborad_view(request):
@@ -16,3 +17,6 @@ def dashborad_view(request):
         'products':products
     }
     return render(request, 'dashboard/index.html', context)
+
+def logout(request):
+    return render(request,logout)
