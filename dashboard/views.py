@@ -1,6 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from main.models import*
-from django.contrib.auth import logout
 
 
 def dashborad_view(request):
@@ -18,5 +17,32 @@ def dashborad_view(request):
     }
     return render(request, 'dashboard/index.html', context)
 
-def logout(request):
-    return render(request,logout)
+
+def categories_view(request):
+    categorys = Category.objects.all()
+    if request.method == 'POST':
+        name = request.POST['name']
+        Category.objects.create(
+            title=name,
+            slug=name
+        )
+    context = {
+        'categorys':categorys
+    }
+    return render(request, 'dashboard/categories.html', context)
+
+
+def category_update(request):
+    name = request.POST['name']
+    id = request.POST['id']
+    category = Category.objects.get(id=id)
+    category.title=name
+    category.save()
+    return redirect('categories_url')
+
+
+def category_delete(request):
+    id = request.POST['id']
+    category = Category.objects.get(id=id)
+    category.delete()    
+    return redirect('categories_url')

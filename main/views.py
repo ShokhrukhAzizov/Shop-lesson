@@ -33,7 +33,6 @@ def products(request):
     q = request.GET.get('name')
     if q is not None and q!= '':
         products = Product.objects.filter(Q(name__icontains=q))
-
     context = {
         'products':products
     }
@@ -41,17 +40,12 @@ def products(request):
 
 
 def product_detail(request, pk):
-    
     product = Product.objects.get(pk=pk)
     comment = Comment.objects.filter(product=product)
-    
-    
     context = {
         'product':product,
-        'comment':comment,
-        
-    }
-    
+        'comment':comment,   
+    }  
     if request.method == 'POST':
         a = request.POST['comment']
         Comment.objects.create(
@@ -84,3 +78,7 @@ def register_page(request):
 
     return render(request,'main/register-page.html')
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('index_url')
