@@ -46,3 +46,29 @@ def category_delete(request):
     category = Category.objects.get(id=id)
     category.delete()    
     return redirect('categories_url')
+
+
+def product_page(request):
+    products = Product.objects.all()
+    category = Category.objects.filter(title=products)
+    if request.method == 'POST':
+        company = request.POST['company']
+        name = request.POST['name']
+        descritpion = request.POST['description']
+        file = request.POST['file']
+        price = request.POST['price']
+        Product.objects.create(
+            company=company,
+            name=name,
+            description=descritpion,
+            image=file,
+            price=price,
+            slug=name,
+            category=category
+        )
+    context = {
+            'products':products,
+            'category':category
+        }
+        
+    return render(request, 'dashboard/products.html',context)
