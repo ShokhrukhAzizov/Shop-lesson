@@ -50,7 +50,7 @@ def category_delete(request):
 
 def product_page(request):
     products = Product.objects.all()
-    category = Category.objects.filter(title=products)
+    category = Category.objects.all()
     if request.method == 'POST':
         company = request.POST['company']
         name = request.POST['name']
