@@ -44,7 +44,9 @@
                 <tr>
                     <th class="border-top-0">№</th>
                     <th class="border-top-0">Nomi</th>
-                    <th class="border-top-0">Maxsulot soni</th>
+                    <th class="border-top-0">Narxi</th>
+                    <th class="border-top-0">Qo'shilgan Vaqt</th>
+                
                     <th class="border-top-0">O`zgartirish</th>
                     <th class="border-top-0">O`chirish</th>
                 </tr><!--end tr-->
@@ -54,9 +56,10 @@
                 <tr>                                                        
                     <td><a href="" class="text-primary">{{forloop.counter}}</a></td>
                     <td>{{p.name}}</td>
-                    <td>5</td>
-                    <!-- <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#cat-edit{{p.id}}"><i class="mdi mdi-briefcase-edit-outline"></i></button>                 </td>
-                    <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#cat-delete{{p.id}}"><i class="mdi mdi-trash-can"></i></button>                 </td> -->
+                    <td>{{p.created}}</td>
+                    <td>{{p.price}}$</td>
+                    <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#product-edit{{p.id}}"><i class="mdi mdi-briefcase-edit-outline"></i></button>                 </td> 
+                    <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#product-delete{{p.id}}"><i class="mdi mdi-trash-can"></i></button>                 </td> 
                 </tr><!--end tr-->   
                 {% endfor %}                          
             </tbody>
@@ -76,7 +79,7 @@
                 {% csrf_token %}
             <div class="modal-body">
                 <select name="category" id="">
-                    {% for cat in category %}
+                    {% for cat in categorys %}
                     <option value="{{cat.id}}">{{cat.title}}</option>
                     {% endfor %}
                 </select>
@@ -108,4 +111,40 @@
         </div><!--end modal-content-->
     </div><!--end modal-dialog-->
 </div>
+{% for p in products %}
+<div class="modal fade" id="product-delete{{p.id}}" tabindex="-1" aria-labelledby="exampleModalFullscreenSmLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalFullscreenSmLabel">Boshqaruv panel</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- <p class="mb-0"></p> -->
+            <div class="card-body">
+                <form method="post" action="{% url 'products_delete_url' %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="username">{{p.name}} Maxsulotni o`chirmoqchimisiz? </label>
+                                <input type="hidden" value="{{p.id}}" name="id">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-end">
+                            <button type="submit" class="btn btn-de-danger px-4">O`chirish</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-de-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 {% endblock %}

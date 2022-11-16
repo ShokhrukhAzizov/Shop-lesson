@@ -35,7 +35,7 @@ class Product(models.Model):
         return self.name
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('-created',)
 
 class Comment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
