@@ -1,0 +1,87 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+<style>
+ #com1{
+    width: 300px;
+ }
+ #Max1{
+    width: 300px;
+ }
+
+</style>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <div class="float-end">
+                <ol class="breadcrumb">
+                   
+                    <!--end nav-item-->
+                    <li class="breadcrumb-item"><a href="#">Admin boshqaruv paneli</a>
+                    </li><!--end nav-item-->
+                    
+                </ol>
+            </div>
+            <h4 class="page-title">Maxsulotlar</h4>
+        </div><!--end page-title-box-->
+    </div><!--end col-->
+</div>
+
+<div class="card-header">
+    <div class="row align-items-center">
+        <div class="col d-flex justify-content-between">                      
+            <h4 class="card-title">Maxsulotlar</h4>     
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bd-example-modal-xl">
+                Maxsulot qo'shish
+            </button>        </div><!--end col-->                                        
+    </div>  <!--end row-->                                  
+</div><!--end card-header-->
+<div class="card-body">
+    <div class="table-responsive browser_users">
+        <h1>Product</h1>
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th class="border-top-0">№</th>
+                    <th class="border-top-0">Nomi</th>
+                    <th class="border-top-0">Narxi</th>
+                    <th class="border-top-0">Qo'shilgan Vaqt</th>
+                
+                    <th class="border-top-0">O`zgartirish</th>
+                    <th class="border-top-0">O`chirish</th>
+                </tr><!--end tr-->
+            </thead>
+            <tbody>
+                {% for p in products %}
+                <tr>                                                        
+                    <td><a href="" class="text-primary">{{forloop.counter}}</a></td>
+                    <td>{{p.name}}</td>
+                    <td>{{p.created}}</td>
+                    <td>{{p.price}}$</td>
+                    <td><button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#product-edit{{p.id}}"><i class="mdi mdi-briefcase-edit-outline"></i></button>                 </td> 
+                    <td><button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#product-delete{{p.id}}"><i class="mdi mdi-trash-can"></i></button>                 </td> 
+                </tr><!--end tr-->   
+                {% endfor %}                          
+            </tbody>
+        </table> <!--end table-->     
+        <h1>Kategory</h1>                                                
+        <table class="table mb-0">
+            <thead class="thead-light">
+                <tr>
+                    <th class="border-top-0">№</th>
+                    <th class="border-top-0">Nomi</th>
+                </tr><!--end tr-->
+            </thead>
+            <tbody>
+                {% for c in categorys %}
+                <tr>                                                        
+                    <td><a href="" class="text-primary">{{forloop.counter}}</a></td>
+                    <td>{{c.title}}</td></tr><!--end tr-->   
+                {% endfor %}                          
+            </tbody>
+        </table> <!--end table-->                                               
+    </div><!--end /div-->
+</div><!--end card-body--> 
+</div>
+{% endblock %}

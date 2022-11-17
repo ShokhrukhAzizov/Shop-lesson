@@ -167,8 +167,8 @@
                         </button>
                     </li> 
                     <li class="hide-phone app-search">
-                        <form role="search" action="#" method="get">
-                            <input type="search" name="search" class="form-control top-search mb-0" placeholder="Qidiruv">
+                        <form role="search" action="{% url 'query' %}" method="get">
+                            <input type="search" name="q" class="form-control top-search mb-0" placeholder="Qidiruv">
                             <button type="submit"><i class="ti ti-search"></i></button>
                         </form>
                     </li>                       
